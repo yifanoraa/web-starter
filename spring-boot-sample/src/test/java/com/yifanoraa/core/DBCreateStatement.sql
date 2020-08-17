@@ -1,0 +1,7 @@
+CREATE DATABASE `test`;
+CREATE TABLE `content_table` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `content` varchar(4000) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10039 DEFAULT CHARSET=utf8;
+
