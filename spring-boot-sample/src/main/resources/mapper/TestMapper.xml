@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yfliu.mapper.FeedbackMapper" >
+<mapper namespace="com.yifanoraa.core.dao.TestDao" >
     <sql id="BASE_TABLE">
-    user_diagnosis
+    content_table
   </sql>
     <sql id="BASE_COLUMN">
-    id,product_name,status,feedback_at,terminal_type,content
+    id,content
   </sql>
-    <insert id="insert" parameterType="com.yfliu.model.Feedback" >
+    <insert id="insert" parameterType="com.yifanoraa.core.model.TestContent" >
         INSERT INTO
         <include refid="BASE_TABLE"/>
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            product_name,status,feedback_at,terminal_type,content
+            content
         </trim>
         <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
-            #{productName},#{status},#{feedbackAt},#{terminalType},#{content}
+            #{content}
         </trim>
     </insert>
 
-    <select id="selectRecords" resultType="com.yfliu.model.Feedback">
+    <select id="fetchContent" resultType="com.yifanoraa.core.model.TestContent">
         SELECT
         <include refid="BASE_COLUMN"/>
         FROM
