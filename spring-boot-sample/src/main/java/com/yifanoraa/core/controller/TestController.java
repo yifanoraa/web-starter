@@ -4,13 +4,16 @@ import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import com.yifanoraa.core.model.TestContent;
 import com.yifanoraa.core.service.TestService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
+@Api(tags = "Test api")
+@RequestMapping(value = "/test")
 public class TestController {
 
     @Autowired
@@ -18,6 +21,7 @@ public class TestController {
 
 
     @ResponseBody
+    @ApiOperation("Insert test content")
     @PostMapping("/add")
     public JSONObject addTestContent(@RequestBody JSONObject jsonObject){
         // Construct response
@@ -33,6 +37,7 @@ public class TestController {
     }
 
     @ResponseBody
+    @ApiOperation("Fetch test data by page")
     @GetMapping("/fetch")
     public JSONObject findFeedbackPage(
             @RequestParam(name = "pageNum", required = false, defaultValue = "1")

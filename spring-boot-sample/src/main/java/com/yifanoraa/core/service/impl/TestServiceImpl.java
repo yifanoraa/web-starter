@@ -17,14 +17,25 @@ public class TestServiceImpl implements TestService {
     @Autowired
     TestDao testDao;
 
+    /**
+     * 数据库写入
+     * @param rawContent JSON参数
+     * @return
+     */
     @Override
     public int addContent(JSONObject rawContent) {
         testDao.insert(parseRawContent(rawContent));
         return 1;
     }
 
+    /**
+     * 数据库分页读取
+     * @param pageNum 分页数
+     * @param pageSize 分页大小
+     * @return
+     */
     @Override
-    public PageInfo<TestContent> findAllRecords(int pageNum, int pageSize) {
+    public PageInfo findAllRecords(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<TestContent> userDomains = testDao.fetchContent();
         return new PageInfo(userDomains);
